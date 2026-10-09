@@ -11,7 +11,7 @@ new #[Layout('layouts.app')] class extends Component
         ['name' => 'Dokter', 'href' => '#dokter'],
         ['name' => 'Testimoni', 'href' => '#testimoni'],
         ['name' => 'Kontak', 'href' => '#kontak'],
-        ['name' => 'Login', 'href' => '/login'],
+        // ['name' => 'Login', 'href' => '/login'],
     ];
 
     public bool $openMenu = false;
@@ -52,6 +52,9 @@ new #[Layout('layouts.app')] class extends Component
                 <a wire:click="disableOpenMenu" href="#reservasi" class="hidden rounded-full border border-primary px-5 py-2 text-sm text-primary transition-colors hover:bg-primary hover:text-primary-foreground sm:block">
                     Reservasi
                 </a>
+                <a wire:click="disableOpenMenu" href="/login" class="hidden rounded-full border border-primary px-5 py-2 text-sm text-primary transition-colors hover:bg-primary hover:text-primary-foreground sm:block">
+                    Login
+                </a>
                 <button
                     aria-label="{{ $openMenu ? "Tutup menu" : "Buka menu"}}"
                     aria-expanded="{{ $openMenu }}"
@@ -71,6 +74,9 @@ new #[Layout('layouts.app')] class extends Component
                     @endforeach
                     <a wire:click="disableOpenMenu" href="#reservasi" class="mt-2 rounded-full bg-gold-gradient px-5 py-3 text-center text-sm font-medium text-primary-foreground shadow-soft">
                         Reservasi
+                    </a>
+                    <a wire:click="disableOpenMenu" href="/login" class="mt-2 rounded-full bg-gold-gradient px-5 py-3 text-center text-sm font-medium text-primary-foreground shadow-soft">
+                        Login
                     </a>
                 </div>
             </nav>

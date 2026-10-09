@@ -29,7 +29,8 @@ new #[Layout('layouts::doctor')] #[Lazy] class extends Component
         // $doctors = Doctor::all();
 
         Doctor::with(['bookings' => function($query){
-            $b = $query->where('booking_date','=', Carbon::now('Asia/Jakarta')->toDateString())->get();
+            // $b = $query->where('booking_date','=', Carbon::now('Asia/Jakarta')->toDateString())->get();
+            $query->where('status','pending')->get();
             // dump($b);
         }])->select('id', 'user_id')->where('user_id', $this->userId)->get()->map(function($item) use($customers, $services){
             // dump($item);

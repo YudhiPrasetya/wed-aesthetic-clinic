@@ -103,7 +103,7 @@ new #[Layout('layouts.app')] class extends Component
                 'customer_id' => $newCustomer->id,
                 'service_id' => $this->jnsLayanan,
                 'doctor_id' => $this->doctor,
-                'booking_date' => \Carbon\Carbon::parse($this->tglLayanan, 'Asia/Jakarta')->toDate(),
+                'booking_date' => Carbon::parse($this->tglLayanan, 'Asia/Jakarta')->toDate(),
                 'booking_time' => $this->jamLayanan,
                 'status' => 'pending'
             ]);
