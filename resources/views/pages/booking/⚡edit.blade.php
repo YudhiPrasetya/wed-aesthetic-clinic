@@ -111,9 +111,9 @@ new #[Layout('layouts::doctor')] class extends Component
 ?>
 
 <div>
-    <div class="flex gap-6 justify-center my-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-center my-6">
         {{-- Info customer --}}
-        <div class="w-1/3">
+        {{-- <div class="flex-initial w-1/3"> --}}
             <x-card>
                 <x-slot:header>
                     <div class="text-xl font-bold">
@@ -127,9 +127,10 @@ new #[Layout('layouts::doctor')] class extends Component
                 </div>
             </x-card>
 
-        </div>
+        {{-- </div> --}}
 
-        <div class="w-2/3">
+        {{-- Info Service --}}
+        {{-- <div class="flex-initial w-1/3"> --}}
             <x-card>
                 <x-slot:header>
                     <div class="text-xl font-bold">
@@ -148,7 +149,7 @@ new #[Layout('layouts::doctor')] class extends Component
                         </div>
                     </div>
             </x-card>
-        </div>
+        {{-- </div> --}}
 
     </div>
     <x-radio.group xs wire:model="confirmation"
