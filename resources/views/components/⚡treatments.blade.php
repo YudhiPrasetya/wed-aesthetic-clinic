@@ -22,11 +22,6 @@ new #[Layout('layouts.app')] class extends Component
     <section id="layanan" class="py-24">
       <div class="mx-auto max-w-7xl px-6">
         <livewire:section-head :eyebrow="$layananUnggulan" :title="$perawatanPilihan" />
-        {{-- <div class="mx-auto max-w-2xl text-center">
-            <p>Layanan Unggulan</p>
-            <h2 class="mt-4 text-4xl text-espresso md:text-5xl">Perawatan Pilihan Kami</h2>
-        </div> --}}
-
         <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           @foreach ($treatments as $t)
             @php
@@ -38,6 +33,8 @@ new #[Layout('layouts.app')] class extends Component
               <div class="relative">
                 <h3 class="text-2xl text-espresso transition-colors group-hover:text-primary-foreground">{{ $t['name'] }}</h3>
                 <p class="mt-3 text-sm text-muted-foreground transition-colors group-hover:text-primary-foreground/90">{{ $t['description'] }}</p>
+                <p class="mt-5 text-[0.65rem] uppercase tracking-widest text-primary/70 transition-colors group-hover:text-primary-foreground/80">Mulai dari</p>
+                <p class="font-serif text-2xl text-espresso transition-colors group-hover:text-primary-foreground">Rp. {{ number_format($t['price'], 0, ",", ".") }}</p>
                 <a href="#reservasi" class="mt-6 inline-block text-xs uppercase tracking-widest text-primary transition-colors group-hover:text-primary-foreground">
                   Reservasi →
                 </a>
@@ -48,6 +45,7 @@ new #[Layout('layouts.app')] class extends Component
             @endphp
           @endforeach
         </div>
+        <p class="mt-8 text-center text-xs text-muted-foreground">*Harga mulai dari dan dapat berbeda setelah konsultasi dokter.</p>
       </div>
     </section>
 </div>

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
-            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
-            $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade')->nullable();
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->nullable();
+            $table->foreignId('service_id')->constrained('services')->onDelete('cascade')->nullable();
             $table->dateTime('booking_time');
             $table->enum('status', ['pending', 'confirmed', 'completed', 'cancelled'])->default('pending');
             $table->text('notes')->nullable();
