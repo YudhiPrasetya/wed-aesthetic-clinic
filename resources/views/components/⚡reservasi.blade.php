@@ -159,8 +159,8 @@ new #[Layout('layouts.app')] class extends Component
             $this->dialog()
                  ->warning(
                     'Peringatan',
-                    'Layanan ' . $serviceName . ' untuk tanggal '
-                    . Carbon::parse($this->tglLayanan)->format('d-m-Y') . ' jam ' . $this->jamLayanan . ' sudah memenuhi kuota!')->send();
+                    'Layanan ' . $serviceName . ' untuk tanggal: '
+                    . Carbon::parse($this->tglLayanan)->format('d-m-Y') . ' jam: ' . $t . ' sudah memenuhi kuota!')->send();
             $this->available = false;
         }else{
             $this->dialog()->success('Tersedia', 'Kuota masih tersedia.')->send();
