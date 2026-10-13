@@ -30,7 +30,6 @@ new #[Layout('layouts.app')] class extends Component
     #[Validate('required')]
     public string $nomorWA = '';
 
-    #[Validate('required')]
     public int $doctor = 0;
 
     #[Validate('required')]
@@ -39,9 +38,7 @@ new #[Layout('layouts.app')] class extends Component
     #[Validate('required')]
     public string $tglLayanan = '';
 
-    #[Validate('required')]
     public string $jamLayanan = '';
-
 
     public array $doctors = [];
     public array $services = [];
@@ -53,7 +50,10 @@ new #[Layout('layouts.app')] class extends Component
     public string $input = "w-full rounded-lg border bg-background px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-ring/20";
     public int $consultPrice = 100000;
     public array $serviceTimes = [];
+
+    #[Validate('required')]
     public string $selectedTime = '';
+
     public bool $available = false;
 
     public function mount(){
@@ -92,9 +92,9 @@ new #[Layout('layouts.app')] class extends Component
     }
 
     private function save(){
-        // $this->validate();
+        $this->validate();
 
-    $newCustomer = Customer::create([
+        $newCustomer = Customer::create([
             'full_name' => $this->fullName,
             'phone' => $this->nomorWA,
             'address' => $this->alamat,
@@ -149,8 +149,8 @@ new #[Layout('layouts.app')] class extends Component
     }
 
     public function checkQuotaAndSetTime(string $t){
-        $bookingsCount = Booking::where(['service_id' => $this->jnsLayanan, 
-                                                 'booking_date' => Carbon::parse($this->tglLayanan, 'Asia/Jakarta')->toDateString(), 
+        $bookingsCount = Booking::where(['service_id' => $this->jnsLayanan,
+                                                 'booking_date' => Carbon::parse($this->tglLayanan, 'Asia/Jakarta')->toDateString(),
                                                  'booking_time' => $t])->count();
         $quota = ServiceSchedule::where(['service_id' => $this->jnsLayanan, 'hours' => $t])->first();
 
@@ -158,12 +158,12 @@ new #[Layout('layouts.app')] class extends Component
             $serviceName = Service::find($this->jnsLayanan)->name;
             $this->dialog()
                  ->warning(
-                    'Peringatan', 
+                    'Peringatan',
                     'Layanan ' . $serviceName . ' untuk tanggal '
                     . Carbon::parse($this->tglLayanan)->format('d-m-Y') . ' jam ' . $this->jamLayanan . ' sudah memenuhi kuota!')->send();
             $this->available = false;
         }else{
-            $this->dialog()->success('Tersesia', 'Kuota masih tersedia.')->send();
+            $this->dialog()->success('Tersedia', 'Kuota masih tersedia.')->send();
             $this->selectedTime = $t;
             $this->available = true;
         }
@@ -286,6 +286,10 @@ new #[Layout('layouts.app')] class extends Component
                                     @endforeach
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="my-4">
+                            <x-errors />
                         </div>
                     @endif
                     <div class="mt-8 flex justify-between gap-4">
