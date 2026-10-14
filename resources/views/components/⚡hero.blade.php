@@ -25,7 +25,7 @@ new #[Layout('layouts.app')] class extends Component
             Klinik estetika medis terpercaya dengan teknologi mutakhir dan tim dokter ahli.
           </p>
           <a href="#reservasi" class="mt-10 inline-flex items-center gap-3 rounded-full bg-gold-gradient px-8 py-4 text-sm font-medium tracking-wide text-primary-foreground shadow-soft transition-transform hover:-translate-y-0.5">
-            Reservasi Jadwal Dokter
+            Reservasi Jadwal Perawatan
           </a>
           <div class="mt-12 flex gap-10 border-t pt-8">
             @foreach ($ratings as $rating)
